@@ -1,0 +1,2 @@
+class ElearningController < ApplicationController
+end
