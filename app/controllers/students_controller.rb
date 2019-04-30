@@ -10,6 +10,7 @@ class StudentsController < ApplicationController
     @student = Student.new(student_params)    # params for Student, taken from html input
     if @student.save
       # Handle a successful save.
+      log_in @student
       flash[:success] = "Welcome to the Elearning!"
       redirect_to @student
     else
