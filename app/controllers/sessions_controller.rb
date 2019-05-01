@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if student && student.authenticate(params[:session][:password]) # if email and password are correct
       # Log the user in and redirect to the user's show page.
       log_in student
-      redirect_to controller: "elearning"
+      redirect_back_or(elearning_index_path)
     else 
       # Create an error message.
       flash.now[:danger] = 'Invalid email/password combination' 

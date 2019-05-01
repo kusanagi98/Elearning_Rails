@@ -1,5 +1,9 @@
 class StudentsController < ApplicationController
   layout "student"
+  before_action :logged_in_user, only: [:edit, :update]
+   # check before edit and update if logged in or not
+  before_action :correct_user,   only: [:edit, :update]
+   # check before edit and update if correct user
   def show
     @student = Student.find(params[:id]) #params hash include id action controller
   end
@@ -17,10 +21,38 @@ class StudentsController < ApplicationController
       render 'new'
     end
   end
+  def edit
+    @student = Student.find(params[:id])
+  end
+  def update
+    @student = Student.find(params[:id])
+    if @student.update_attributes(student_params)
+      # Handle a successful update.
+      flash[:success] = "Profile updated"
+      redirect_to @student
+    else
+      render 'edit'
+    end
+  end
   private
 
     def student_params
       params.require(:student).permit(:name, :email, :password,
                                    :password_confirmation, :address, :dateofBirth, :budget)
+    end
+    # Before filters
+
+    # Confirms a logged-in user.
+    def logged_in_user
+      unless logged_in?
+        store_location
+        flash[:danger] = "Please log in"
+        redirect_to login_url
+      end
+    end
+    # Confirms the correct user.
+    def correct_user
+      @student = Student.find(params[:id])
+      redirect_to elearning_index_path unless current_user?(@student)
     end
 end

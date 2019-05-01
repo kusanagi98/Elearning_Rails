@@ -1,24 +1,5 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Elearning_Rails
+This is a reconstruction of our Elearning project for DBMS class using Ruby on Rails.
+Ruby 2.6.1
+Rails 5.2.3
+Built with the help of the Rails Tutorial book by Michael Hartl
