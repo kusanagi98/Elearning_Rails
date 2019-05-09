@@ -1,0 +1,44 @@
+<% provide(:title, 'Edit Course') %>
+<h1>Edit Course</h1>
+
+<div class="row">
+</div>
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with model: @course, url: elearning_id_update_path, local: true do |f|  %> 
+      <%= render 'shared/error_messages', object: f.object %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+
+      <%= f.label :aim, "The aim of the course" %>
+      <%= f.text_area :aim %>
+
+      <%= f.label :category %>
+      <br />
+      <%= f.label :category, "Math" %>
+      <%= f.radio_button :category, "Math" %>
+      <%= f.label :category, "Literature" %>
+      <%= f.radio_button :category, "Literature" %>
+      <%= f.label :category, "Linguistics" %>
+      <%= f.radio_button :category, "Linguistics" %>
+
+      <%= f.label :requirement %>
+      <%= f.text_area :requirement %>
+
+      <%= f.label :fee %>
+      <%= f.number_field :fee %>
+
+      <%= f.label :cover %>
+      <%= f.file_field :cover %>
+      <% if f.object.cover? %>
+      <%= image_tag f.object.cover.thumb.url %>
+      <%= f.label :remove_cover %>
+      <%= f.check_box :remove_cover %> 
+      <% end %>
+
+      <%= f.submit "Update Course", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

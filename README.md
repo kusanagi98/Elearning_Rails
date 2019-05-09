@@ -12,4 +12,3 @@ This is a reconstruction of our Elearning project for DBMS class using Ruby on R
 ## Acknowledgments
 
 * Big thanks to Micheal Hartl for his amazing Rails Tutorial book
-
