@@ -54,9 +54,10 @@
 
                         <div class="course-students mt-3">
                             <label class="m-0">Student</label>
-                            <div class="author-name">Number</div>
+                            <div class="author-name"><%= @course.subscribers.count %></div>
                         </div><!-- .course-students -->
-                        <% if current_user[:student_id] == @course[:student_id] %>
+                        <% if logged_in? %>
+                          <% if current_user[:student_id] == @course[:student_id] %>
                         <div class="course-students mt-3">
                             <label class="m-0">Edit</label>
                             <div class="author-name"><%=link_to "Edit", edit_elearning_path %></div>
@@ -66,10 +67,26 @@
                             <div class="author-name"><%=link_to "Delete", elearning_url, method: :delete,
                                   data: { confirm: "You sure?" } %> </div>
                         </div><!-- .course-students -->
+                          <% else %>
+                            <% if current_user.subscribed?(@course) %>
+                            <%= form_for(current_user.subscriptions.find_by(subscribed_id: @course.course_id), html: { method: :delete }) do |f| %>
+                            <div class="buy-course mt-3"><%= f.submit "UNFOLLOW", class: "btn" %></div>
+                            <% end %>
+                            <% else %>
+                                <% if current_user.budget > @course.fee %>
+                                <%= form_for(current_user.subscriptions.build) do |f| %>
+                                <div><%= hidden_field_tag :subscribed_id, @course.course_id %></div>
+                                <div class="buy-course mt-3"><%= f.submit "BUY NOW", class: "btn" %></div><!-- .buy-course -->
+                                    <% end %>
+                                <% else %>
+                                <div class="author-name">Not enough budget</div>
+                                <%end%>
+                            <% end %>
+                          <% end %>
+                        <% else %>
+                            <div class="author-name"><%=link_to "Log in to buy course", login_path %></div>
                         <% end %>
 
-                        <div class="buy-course mt-3"><a class="btn" href="#">BUY NOW</a>
-                        </div><!-- .buy-course -->
 
                     </div><!-- .course-info -->
 
@@ -95,7 +112,7 @@
                         <header class="entry-heading flex flex-wrap justify-content-between align-items-center">
                             <h2 class="entry-title">Related Courses</h2>
 
-                            <a href="#">View all</a>
+                            <%= link_to "View all", elearning_index_path %>
                         </header><!-- .entry-heading -->
                         
                         <div class="row mx-m-25">
@@ -114,7 +131,7 @@
                                             <h2 class="entry-title"><%= link_to "#{course.name}", elearning_path(course.course_id) %></h2>
 
                                             <div class="entry-meta flex flex-wrap align-items-center">
-                                                <div class="course-author"><%= link_to "#{course.teacher_name}", student_path(course.id) %></div>
+                                                <div class="course-author"><%= link_to "#{course.teacher_name}", student_path(course.sid) %></div>
 
                                             
                                         </header><!-- .entry-header -->

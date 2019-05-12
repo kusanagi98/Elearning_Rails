@@ -8,4 +8,54 @@
     </h1>
     </section>
   </aside>
+                <div class="col-md-8">
+                                <div class="row" style="margin-bottom: 10px;">
+
+                                    <div class="col-md-6">
+                                        <label style="text-align: left;">User Id</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p> <%= @student.student_id %> </p>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-bottom: 10px;">
+                                    <div class="col-md-6">
+                                        <label style="text-align: left;">Email</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p> <%= @student.email %> </p>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-bottom: 10px;">
+                                    <div class="col-md-6">
+                                        <label style="text-align: left;">Address</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p> <%= @student.address %> </p>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-bottom: 10px;">
+                                    <div class="col-md-6">
+                                        <label style="text-align: left;">DOB</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p> <%= @student.dateofBirth %> </p>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-bottom: 10px;">
+                                    <div class="col-md-6">
+                                        <label style="text-align: left;">Balance</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p> <%= @student.budget %>$ </p>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-bottom: 10px;">
+                                    <div class="col-md-6">
+                                        <label style="text-align: left;">Subscriptions</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p> <%= @student.subscribeds.count %> </p>
+                                    </div>
+                                </div>
 </div>

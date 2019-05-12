@@ -4,12 +4,12 @@ class ElearningController < ApplicationController
     before_action :teacher_user, only: [:new, :create, :edit, :update, :destroy]
     before_action :correct_teacher, only: [:edit, :update, :destroy]
     def index
-        @courses = Course.joins(:student).select('courses.course_id, courses.name, courses.category, courses.cover, courses.fee, students.student_id as id, students.name as teacher_name, courses.created_at')
+        @courses = Course.joins(:student).select('courses.course_id, courses.name, courses.category, courses.cover, courses.fee, students.student_id as sid, students.name as teacher_name, courses.created_at')
     end
     def show
         @course = Course.find(params[:id])
         @teacher = Student.find(@course[:student_id])
-        @courses = Course.joins(:student).select('courses.course_id, courses.name, courses.category, courses.cover, courses.fee, students.student_id as id, students.name as teacher_name').where(category: @course[:category]).take(2)
+        @courses = Course.joins(:student).select('courses.course_id, courses.name, courses.category, courses.cover, courses.fee, students.student_id as sid, students.name as teacher_name').where(category: @course[:category]).take(2)
     end
     def new
         @course = current_user.courses.build

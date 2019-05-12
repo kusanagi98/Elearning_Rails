@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_04_170800) do
+ActiveRecord::Schema.define(version: 2019_05_12_104212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,16 @@ ActiveRecord::Schema.define(version: 2019_05_04_170800) do
     t.string "password_digest"
     t.boolean "teacher", default: false
     t.index ["email"], name: "index_students_on_email", unique: true
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer "subscriber_id"
+    t.integer "subscribed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subscribed_id"], name: "index_subscriptions_on_subscribed_id"
+    t.index ["subscriber_id", "subscribed_id"], name: "index_subscriptions_on_subscriber_id_and_subscribed_id", unique: true
+    t.index ["subscriber_id"], name: "index_subscriptions_on_subscriber_id"
   end
 
   add_foreign_key "courses", "students", primary_key: "student_id"

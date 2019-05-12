@@ -40,7 +40,7 @@
                                         <h2 class="entry-title"><%= link_to "#{course.name}", elearning_path(course.course_id) %></h2>
 
                                         <div class="entry-meta flex flex-wrap align-items-center">
-                                            <div class="course-author"><%= link_to "#{course.teacher_name}", student_path(course.id) %></div>
+                                            <div class="course-author"><%= link_to "#{course.teacher_name}", student_path(course[:sid]) %></div>
 
                                     </header><!-- .entry-header -->
 
