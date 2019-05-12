@@ -56,14 +56,17 @@
                             <label class="m-0">Student</label>
                             <div class="author-name">Number</div>
                         </div><!-- .course-students -->
+                        <% if current_user[:student_id] == @course[:student_id] %>
                         <div class="course-students mt-3">
                             <label class="m-0">Edit</label>
-                            <% if current_user[:student_id] == @course[:student_id] %>
                             <div class="author-name"><%=link_to "Edit", edit_elearning_path %></div>
-                            <% else %>
-                            <div class="author-name">Nope</div>
-                            <% end %>
                         </div><!-- .course-students -->
+                        <div class="course-students mt-3">
+                            <label class="m-0">Delete</label>
+                            <div class="author-name"><%=link_to "Delete", elearning_url, method: :delete,
+                                  data: { confirm: "You sure?" } %> </div>
+                        </div><!-- .course-students -->
+                        <% end %>
 
                         <div class="buy-course mt-3"><a class="btn" href="#">BUY NOW</a>
                         </div><!-- .buy-course -->
@@ -97,6 +100,7 @@
                         
                         <div class="row mx-m-25">
                            <% @courses.each do |course| %>
+                           <% if course.course_id != @course.course_id %>
                             <div class="col-12 col-lg-6 px-25">
                                 <div class="course-content">
                                     <figure class="course-thumbnail">
@@ -112,7 +116,7 @@
                                             <div class="entry-meta flex flex-wrap align-items-center">
                                                 <div class="course-author"><%= link_to "#{course.teacher_name}", student_path(course.id) %></div>
 
-                                            </div><!-- .course-date -->
+                                            
                                         </header><!-- .entry-header -->
 
                                         <footer class="entry-footer flex flex-wrap justify-content-between align-items-center">
@@ -123,6 +127,7 @@
                                     </div><!-- .course-content-wrap -->
                                 </div><!-- .course-content -->
                             </div><!-- .col -->
+                            <% end %>
                             <% end %>
                         </div><!-- .row -->
                     </div><!-- .related-course -->

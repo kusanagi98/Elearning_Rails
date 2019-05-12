@@ -30,6 +30,9 @@ gem 'jbuilder', '~> 2.5'
 #gem 'bcrypt', '~> 3.1.7'
 gem 'bcrypt', '~> 3.1.11'
 
+# Gemfile for Rails 3+, Sinatra, and Merb
+gem 'will_paginate', '~> 3.1.0'
+gem 'bootstrap-will_paginate', '1.0.0'
 # Use ActiveStorage variant
 gem 'mini_magick', '~> 4.8'
 gem 'carrierwave', '~> 1.0'

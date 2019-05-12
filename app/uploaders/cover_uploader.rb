@@ -32,7 +32,10 @@ class CoverUploader < CarrierWave::Uploader::Base
   version :thumb do
      process resize_to_fit: [356, 220]
   end
+  version :small_thumb do
+     process resize_to_fit: [83, 83]
 
+  end
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_whitelist
