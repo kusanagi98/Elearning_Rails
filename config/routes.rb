@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :posts
   resources :elearning do member do get :subscribers end end
   resources :students do member do get :subscribeds end end
   get  '/signup',  to: 'students#new'

@@ -27,6 +27,15 @@
       <%= f.label :budget %>
       <%= f.number_field :budget %>
 
+      <%= f.label :avatar %>
+      <%= f.file_field :avatar %>
+      <%  if f.object.avatar? %>
+      <%= image_tag f.object.avatar.url %>
+      <%= f.label :remove_avatar %>
+      <%= f.check_box :remove_avatar %>
+      <%  end %>
+
+
       <%= f.submit "Save changes", class: "btn btn-primary" %>
     <% end %>
   </div>

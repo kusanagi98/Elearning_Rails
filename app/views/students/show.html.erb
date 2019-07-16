@@ -3,7 +3,9 @@
   <aside class="col-md-4">
     <section class="user_info">
     <h1>
-    <%= gravatar_for @student %>
+    <%  if @student.avatar? %>
+    <%= image_tag @student.avatar.url %>
+    <%  end %>
     <%= @student.name %>
     </h1>
     </section>

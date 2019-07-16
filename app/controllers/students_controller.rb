@@ -38,7 +38,7 @@ class StudentsController < ApplicationController
 
     def student_params
       params.require(:student).permit(:name, :email, :password,
-                                   :password_confirmation, :address, :dateofBirth, :budget)
+                                   :password_confirmation, :address, :dateofBirth, :budget, :avatar, :remove_avatar)
     end
     # Before filters
 

@@ -29,13 +29,18 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 #gem 'bcrypt', '~> 3.1.7'
 gem 'bcrypt', '~> 3.1.11'
-
+# Generate erd for rails app
+#gem 'rails-erd', group: :development
 # Gemfile for Rails 3+, Sinatra, and Merb
 gem 'will_paginate', '~> 3.1.0'
 gem 'bootstrap-will_paginate', '1.0.0'
 # Use ActiveStorage variant
 gem 'mini_magick', '~> 4.8'
 gem 'carrierwave', '~> 1.0'
+# Google Cloud
+#gem "fog-google"
+#gem "google-api-client", "> 0.8.5", "< 0.9"
+#gem "mime-types"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

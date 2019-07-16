@@ -69,12 +69,12 @@
                         </div><!-- .course-students -->
                           <% else %>
                             <% if current_user.subscribed?(@course) %>
-                            <%= form_for(current_user.subscriptions.find_by(subscribed_id: @course.course_id), html: { method: :delete }) do |f| %>
+                            <%= form_for(current_user.subscriptions.find_by(subscribed_id: @course.course_id), html: { method: :delete }, data: { confirm: "You sure?" }) do |f| %>
                             <div class="buy-course mt-3"><%= f.submit "UNFOLLOW", class: "btn" %></div>
                             <% end %>
                             <% else %>
                                 <% if current_user.budget > @course.fee %>
-                                <%= form_for(current_user.subscriptions.build) do |f| %>
+                                <%= form_for(current_user.subscriptions.build, data: { confirm: "You sure?" }) do |f| %>
                                 <div><%= hidden_field_tag :subscribed_id, @course.course_id %></div>
                                 <div class="buy-course mt-3"><%= f.submit "BUY NOW", class: "btn" %></div><!-- .buy-course -->
                                     <% end %>
