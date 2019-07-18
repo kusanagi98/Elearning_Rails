@@ -4,7 +4,12 @@ class ElearningController < ApplicationController
     before_action :teacher_user, only: [:new, :create, :edit, :update, :destroy]
     before_action :correct_teacher, only: [:edit, :update, :destroy]
     def index
-        @courses = Course.joins(:student).select('courses.course_id, courses.name, courses.category, courses.cover, courses.fee, students.student_id as sid, students.name as teacher_name, courses.created_at')
+        @courses = Course.joins(:student).select('courses.course_id, courses.name, courses.category, courses.cover, courses.fee, students.student_id as sid, students.name as teacher_name, courses.created_at') 
+        if params[:term]
+            @courses1 = @courses.where('courses.name LIKE ?', "%#{params[:term]}%")
+        else 
+            @courses1 = @courses
+        end
     end
     def show
         @course = Course.find(params[:id])
@@ -60,6 +65,6 @@ class ElearningController < ApplicationController
         end
       end
       def course_params
-        params.require(:course).permit(:name, :description, :fee, :aim, :category, :requirement, :cover, :remove_cover)
+        params.require(:course).permit(:name, :description, :fee, :aim, :category, :requirement, :cover, :remove_cover, :term)
       end
 end

@@ -14,10 +14,14 @@
 
                         <div class="col-12 col-lg-6 d-flex flex-wrap justify-content-center justify-content-lg-end align-items-center">
                             <div class="header-bar-search">
-                                <form class="flex align-items-stretch">
+                                <%= form_tag(elearning_index_path, method: :get, class: 'flex align-items-stretch') do %>
+                                    <%= text_field_tag :term %>
+                                    <%= button_tag "", type: 'submit' , class: "flex justify-content-center align-items-center fa fa-search"  %>
+                                <% end %>    
+                                <!--<form class="flex align-items-stretch"> 
                                     <input type="search" placeholder="What would you like to learn?">
                                     <button type="submit" value="" class="flex justify-content-center align-items-center"><i class="fa fa-search"></i></button>
-                                </form>
+                                </form>-->
                             </div><!-- .header-bar-search -->
 
                             <div class="header-bar-menu">
