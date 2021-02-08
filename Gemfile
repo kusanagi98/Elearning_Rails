@@ -36,7 +36,7 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'bootstrap-will_paginate', '1.0.0'
 # Use ActiveStorage variant
 gem 'mini_magick', '~> 4.8'
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 # Google Cloud
 #gem "fog-google"
 #gem "google-api-client", "> 0.8.5", "< 0.9"
